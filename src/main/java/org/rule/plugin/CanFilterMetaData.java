@@ -57,7 +57,7 @@ public class CanFilterMetaData implements PluginMetaData {
 
     @Override
     public String getDescription() {
-        return "Pipeline function that returns message need filter";
+        return "Pipeline function that returns whether filtering is required";
     }
 
     @Override

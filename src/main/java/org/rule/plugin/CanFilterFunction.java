@@ -57,7 +57,7 @@ public class CanFilterFunction implements Function<Boolean> {
                 if (errCode == null || errCode.isBlank()) {
                     return false;
                 }
-                if (errCodeSet.contains(errCode.trim())) {
+                if (!errCodeSet.contains(errCode.trim())) {
                     return false;
                 }
 
@@ -78,7 +78,7 @@ public class CanFilterFunction implements Function<Boolean> {
     public FunctionDescriptor<Boolean> descriptor() {
         return FunctionDescriptor.<Boolean>builder()
                 .name(NAME)
-                .description("return result of filtered 0x1 or 0x4 err.")
+                .description("Return whether filtering is required.")
                 .params(valueParam1, valueParam2)
                 .returnType(Boolean.class)
                 .build();
