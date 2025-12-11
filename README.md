@@ -1,8 +1,9 @@
 # CAN Filter Plugin for Graylog
 
-__Use this paragraph to enter a description of your plugin.__
+____ 
+Graylog plugin to check JSON messages in the pipeline feature
 
-**Required Graylog version:** 2.0 and later
+**Required Graylog version:** 5.0 and later
 
 Installation
 ------------
@@ -27,8 +28,19 @@ dramatically by making use of hot reloading. To do this, do the following:
 
 Usage
 -----
+*Function Prototype:*
+![img.png](img.png)  
+*Function usage in Graylog rules:*
 
-__Use this paragraph to document the usage of your plugin__
+```
+rule "graylog_rule"
+when
+    can_filter(to_string($message), "0x1,0x4")
+then
+    drop_message();
+end
+```
+____
 
 
 Getting started
@@ -37,7 +49,7 @@ Getting started
 This project is using Maven 3 and requires Java 8 or higher.
 
 * Clone this repository.
-* Run `mvn package` to build a JAR file.
+* Run `mvn package -P '!web-interface-build' -DskipTests=true -Denforcer.skip=true` to build a JAR file.
 * Optional: Run `mvn jdeb:jdeb` and `mvn rpm:rpm` to create a DEB and RPM package respectively.
 * Copy generated JAR file in target directory to your Graylog plugin directory.
 * Restart the Graylog.
